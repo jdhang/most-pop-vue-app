@@ -3,10 +3,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="header">
-            <h1>Most Popular Articles on New York Times</h1>
-            <h3>for the Last {{ period }} Day{{ period > 1 ? 's' : '' }}</h3>
-          </div>
+          <Header
+            title="Most Popular Articles on New York Times"
+            v-bind:period="period"
+          />
           <ul class="nav nav-tabs justify-content-center">
             <Tab
               v-for="tab in tabs"
@@ -32,6 +32,7 @@
 
 <script>
 import Article from './components/Article.vue'
+import Header from './components/Header.vue'
 import Tab from './components/Tab.vue'
 import { getCookie, setCookie } from './utils/cookieHelper'
 
@@ -61,6 +62,7 @@ const byViews = (a, b) => {
 export default {
   name: 'app',
   components: {
+    Header,
     Article,
     Tab
   },
@@ -106,8 +108,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   margin-bottom: 60px;
-}
-.header {
-  text-align: center;
 }
 </style>
